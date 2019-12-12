@@ -1,84 +1,560 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="en" dir="ltr">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Corrects IE Compatibility Mode -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Licensed Dogs Data from 2018: lookup name counts</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./fontawesome/css/all.min.css">
+
+    <!-- NYC Theme CSS -->
+    <link rel="stylesheet" href="./css/theme.css">
 	
-<title>Licensed Dogs Data from 2018: lookup name counts</title>
+    <script defer src="./dogTypeahead/jquery-3.4.1.min.js"></script>
+    <script defer type="text/javascript" src="./dogTypeahead/typeahead.bundle.min.js"></script>
+    
+    <script defer type="text/javascript" src="./dogTypeahead/dogs.js"></script>
 
-<script src="./dogTypeahead/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="./dogTypeahead/typeahead.bundle.min.js"></script>
 
-<script defer type="text/javascript" src="./dogTypeahead/dogs.js"></script>
-
-<style type="text/css">
-.bs-example {
-	font-family: sans-serif;
-	position: relative;
-	margin: 100px;
-}
-.answer-name {
-    font-size: 28px;
-}
-.answer-count {
-    font-size: 32px;
-    font-weight: bold
-}
-.typeahead, .tt-query, .tt-hint {
-	border: 2px solid #CCCCCC;
-	border-radius: 8px;
-	font-size: 22px; /* Set input font size */
-	height: 30px;
-	line-height: 30px;
-	outline: medium none;
-	padding: 8px 12px;
-	width: 396px;
-}
-.typeahead {
-	background-color: #FFFFFF;
-}
-.typeahead:focus {
-	border: 2px solid #0097CF;
-}
-.tt-query {
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-}
-.tt-hint {
-	color: #999999;
-}
-.tt-menu {
-	background-color: #FFFFFF;
-	border: 1px solid rgba(0, 0, 0, 0.2);
-	border-radius: 8px;
-	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-	margin-top: 12px;
-	padding: 8px 0;
-	width: 422px;
-}
-.tt-suggestion {
-	font-size: 22px;  /* Set suggestion dropdown font size */
-	padding: 3px 20px;
-}
-.tt-suggestion:hover {
-	cursor: pointer;
-	background-color: #0097CF;
-	color: #FFFFFF;
-}
-.tt-suggestion p {
-	margin: 0;
-}
-</style>
+    
+    
 </head>
+
 <body>
-    <div class="bs-example">
+
+    <!-- For keyboard users -->
+    <a class="sr-only sr-only-focusable skip-menu" href="#primary-content">Skip Header</a>
+
+    <header id="global-header" role="banner">
+
+        <div class="bg-black text-white" id="nyc-top-header">
+
+            <div class="container-fluid wide">
+
+                <div class="row py-1 align-items-center justify-content-between">
+
+                    <div class="col-auto">
+                        <p class="d-none d-md-flex fs-md">
+                            <a class="text-reset" href="https://www1.nyc.gov/">
+                                <strong>nyc.gov</strong>
+                            </a>
+                            <span class="mx-1" aria-hidden="true">|</span>
+                            <a class="text-reset" href="https://www1.nyc.gov/health">Health</a>
+                        </p>
+                    </div>
+                    <!-- .col -->
+
+                    <div class="col-auto">
+
+                        <ul class="extensible-list horizontal fs-md">
+                            <li>
+                                <a href="https://www1.nyc.gov/" title="Go to nyc.gov">
+                                    <img class="d-block" src="./images/nyc-bubble-logo.svg" width="45" alt="NYC Logo">
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!-- .col -->
+
+                </div>
+                <!-- .row -->
+
+            </div>
+            <!-- .container-fluid -->
+
+        </div>
+        <!-- #nyc-top-header -->
+
+        <div class="wrap-header">
+
+            <div class="container-fluid wide">
+
+                <div class="row align-items-center">
+
+                    <div class="col-lg py-2">
+
+                        <div class="d-flex justify-content-center justify-content-lg-start">
+
+                            <a class="align-self-center" href="https://www1.nyc.gov/health" title="Home">
+
+                                <!-- Placeholder logo, replace the following <svg> tag with your own image version -->
+                                <img class="logo" src="./images/Official logo color.jpg" width="100" alt="NYC Health logo">
+                               
+
+                            </a>
+
+                        </div>
+
+                    </div>
+                    <!-- .col -->
+
+                    <div class="col-lg-auto border-top border-lg-0">
+
+                        <div class="d-lg-flex align-items-center">
+
+                            <!-- Mobile Toggle Buttons -->
+
+                            <ul class="extensible-list horizontal justify-content-between my-2 d-lg-none">
+                                <li>
+                                    <button class="navbar-toggler no-btn-style" type="button" title="Main Menu"
+                                        data-toggle="collapse" data-target="#nav-primary" aria-controls="nav-primary"
+                                        aria-expanded="false">
+                                        <span class="sr-only">Main Menu</span>
+                                        <span class="fas fa-bars fa-lg" role="img"></span>
+                                    </button>
+                                </li>
+
+                                <li>
+                                    <button class="no-btn-style" type="button" title="Language" data-toggle="collapse"
+                                        data-target="#global-language" aria-controls="global-language"
+                                        aria-expanded="false">
+                                        <span class="sr-only">Language</span>
+                                        <span class="fas fa-language fa-lg" role="img"></span>
+                                    </button>
+                                </li>
+
+                                <li>
+                                    <button class="no-btn-style" type="button" title="Search" data-toggle="collapse"
+                                        data-target="#global-search" aria-controls="global-search"
+                                        aria-expanded="false">
+                                        <span class="sr-only">Search</span>
+                                        <span class="fas fa-search fa-lg" role="img"></span>
+                                    </button>
+                                </li>
+                            </ul>
+
+                            
+
+                            <!-- Desktop Toggle Buttons -->
+
+                            <ul class="extensible-list horizontal d-none d-lg-flex">
+                                <li>
+                                    <button class="no-btn-style" type="button" title="Language" data-toggle="collapse"
+                                        data-target="#global-language" aria-controls="global-language"
+                                        aria-expanded="false">
+                                        <span class="sr-only">Language</span>
+                                        <span class="fas fa-language fa-lg" role="img"></span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="no-btn-style" type="button" title="Search" data-toggle="collapse"
+                                        data-target="#global-search" aria-controls="global-search"
+                                        aria-expanded="false">
+                                        <span class="sr-only">Language</span>
+                                        <span class="fas fa-search fa-lg" role="img"></span>
+                                    </button>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <!-- .d-flex -->
+
+                    </div>
+                    <!-- .col -->
+
+                </div>
+                <!-- .row -->
+
+            </div>
+            <!-- .container-fluid -->
+
+        </div>
+        <!-- .wrap-header -->
+
+        <div class="container-fluid border-top collapse" id="global-language">
+            <div class="narrow py-2">
+                <div id="google_translate_element"></div>
+            </div>
+        </div>
+
+        <div class="container-fluid border-top collapse" id="global-search">
+            <form class="narrow py-2" aria-label="Search" role="search">
+                <div class="input-group">
+                    <label class="sr-only" for="global-search-bar">Search</label>
+                    <input class="form-control form-control-lg" id="global-search-bar" placeholder="Search">
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary btn-lg" type="button" title="Search">
+                            <span class="sr-only">Search</span>
+                            <span class="fas fa-arrow-right" role="img"></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </header>
+    <!-- #global-header -->
+
+    <main role="main">
+
+        <!-- Add your Custom image class below (after 'banner-with-background') -->
+        <div class="bg-primary banner-with-background dog d-flex flex-column" style="min-height: 250px;">
+
+            <div class="container my-auto">
+                <div class="narrow">
+                    <h1 class="display-4 text-white">New York City Dogs</h1>
+                </div>
+            </div>
+            <!-- .container -->
+
+        </div>
+        <!-- .banner-with-background -->
         
-        <div class=answer-name id=selectedDogName>Dog's Name</div>
-        <div class=answer-count id=selectedDogCount>Count of Licensed Dogs</div>
-        <br>
-        <h2>Type your favorite dog name, and see how many dogs with that name were licensed in 2018!</h2>
-        <input type="text" id="typeahead" class="typeahead tt-query" autocomplete="off" spellcheck="false">
-		<br>
-	</div>
-        
+        <article class="container overflow-hidden" id="primary-content">
+
+            <div class="my-5">
+
+                <div class="narrow my-4">
+                        <style type="text/css">
+                            
+                            .answer-name {
+                                font-size: 1.75rem;
+                            }
+                            .answer-count {
+                                font-size: 1.75rem;
+                                
+                            }
+                            .typeahead, .tt-query, .tt-hint {
+                                border: 2px dashed #CCCCCC;
+                                border-radius: 8px;
+                                font-size: 22px; /* Set input font size */
+                                height: 100px;
+                                line-height: 30px;
+                                outline: medium none;
+                                padding: 8px 12px;
+                                width: 300px;
+                            }
+                            .typeahead {
+                                background-color: #FFFFFF;
+                            }
+                            .typeahead:focus {
+                                border: 2px solid #0097CF;
+                            }
+                            .tt-query {
+                                box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+                            }
+                            .tt-hint {
+                                color: #999999;
+                            }
+                            .tt-menu {
+                                background-color: #FFFFFF;
+                                border: 1px solid rgba(0, 0, 0, 0.2);
+                                border-radius: 8px;
+                                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                                margin-top: 12px;
+                                padding: 8px 0;
+                                width: 322px;
+                            }
+                            .tt-suggestion {
+                                font-size: 22px;  /* Set suggestion dropdown font size */
+                                padding: 3px 20px;
+                            }
+                            .tt-suggestion:hover {
+                                cursor: pointer;
+                                background-color: #0097CF;
+                                color: #FFFFFF;
+                            }
+                            .tt-suggestion p {
+                                margin: 0;
+                            }
+                            .dogtag {
+                                float:right;
+                            }
+                            </style>
+
+                    <h2>See how many licensed dogs in New York City share your dog's name.</h2>
+                    <div class=name-finder>
+                    <div class=userInput .col-md-6>
+                        <br>
+                    <input type="text" id=typeahead class="typeahead tt-query" autocomplete="on" spellcheck="false" placeholder="Type dog's name here">
+                    <div class=dogtag><img src="./images/dogtag.png" height=100px width=100px></div> 
+                    </div>  
+                    <br>
+                    <div class=userResponse .col-md-6>
+                    <div class=answer-count id=selectedDogCount>There are ___ licensed dogs in New York City</div>
+                    <div class=answer-name id=selectedDogName>with the name _______</div>
+                    </div>  
+                    </div> 
+
+                    <br>
+                    <h3>Make your dog count! All dogs in New York City must be licensed. Apply for a dog license <a href="https://a816-healthpsi.nyc.gov/DogLicense/">here</a>.</h2>
+
+                    <p>
+                        
+                    </p>
+
+                <!-- .narrow -->
+
+                <footer class="narrow my-4" id="article-footer">
+
+                    <div class="border-top border-dark">
+
+                        <ul class="extensible-list horizontal text-muted mt-3" id="share-buttons">
+                            <li>
+                                <span class="fas fa-share" title="Share this page" role="img"></span>
+                            </li>
+                            <li>
+                                <a class="no-btn-style text-reset" href="#1" title="Facebook">
+                                    <span class="sr-only">Facebook</span>
+                                    <span class="fab fa-facebook-f" role="img"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="no-btn-style text-reset" href="#1" title="Twitter">
+                                    <span class="sr-only">Twitter</span>
+                                    <span class="fab fa-twitter" role="img"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="no-btn-style text-reset" href="#1" title="Email">
+                                    <span class="sr-only">Email</span>
+                                    <span class="fa fa-envelope" role="img"></span>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!-- .narrow -->
+
+                </footer>
+                <!-- #article-footer -->
+
+            </div>
+            <!-- .my-5 -->
+
+        </article>
+        <!-- #primary-content -->
+
+    </main>
+    <!-- #content -->
+
+    <footer class="bg-black" id="global-footer" role="contentinfo">
+
+        <h2 class="sr-only">
+            Page Footer
+        </h2>
+
+        <div class="bg-opacity-black-25 text-white" id="nyc-footer">
+
+            <div class="container py-3 d-none" id="languages">
+
+                <div class="row fs-md">
+
+                    <div class="col-6 col-md-4 col-lg mb-2 mb-lg-0">
+                        <ul class="extensible-list">
+                            <li><a class="lang-select text-reset" href="#" data-lang="ar">عربى</a></li>
+                            <li><a class="lang-select text-reset" href="#" data-lang="bn">বাঙালি</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg mb-2 mb-lg-0">
+                        <ul class="extensible-list">
+                            <li><a class="lang-select text-reset" href="#" data-lang="zh-CN">中文</a></li>
+                            <li><a class="lang-select text-reset" href="#" data-lang="fr">français</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg mb-2 mb-lg-0">
+                        <ul class="extensible-list">
+                            <li><a class="lang-select text-reset" href="#" data-lang="ht">Kreyòl Ayisyen</a></li>
+                            <li><a class="lang-select text-reset" href="#" data-lang="ko">한국어</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg mb-2 mb-lg-0">
+                        <ul class="extensible-list">
+                            <li><a class="lang-select text-reset" href="#" data-lang="pl">Polskie</a></li>
+                            <li><a class="lang-select text-reset" href="#" data-lang="ru">русский</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg">
+                        <ul class="extensible-list">
+                            <li><a class="lang-select text-reset" href="#" data-lang="es">Español</a></li>
+                            <li><a class="lang-select text-reset" href="#" data-lang="ur">اردو</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <!-- #languages -->
+
+            <div class="container py-3" id="languages">
+
+                <ul class="fs-md" role="list">
+                    <li><a class="lang-select text-reset" href="#" data-lang="ar">عربى</a></li>
+                    <li><a class="lang-select text-reset" href="#" data-lang="bn">বাঙালি</a></li>
+                    <li><a class="lang-select text-reset" href="#" data-lang="zh-CN">中文</a></li>
+                    <li><a class="lang-select text-reset" href="#" data-lang="fr">français</a></li>
+                    <li><a class="lang-select text-reset" href="#" data-lang="ht">Kreyòl Ayisyen</a></li>
+                    <li><a class="lang-select text-reset" href="#" data-lang="ko">한국어</a></li>
+                    <li><a class="lang-select text-reset" href="#" data-lang="pl">Polskie</a></li>
+                    <li><a class="lang-select text-reset" href="#" data-lang="ru">русский</a></li>
+                    <li><a class="lang-select text-reset" href="#" data-lang="es">Español</a></li>
+                    <li><a class="lang-select text-reset" href="#" data-lang="ur">اردو</a></li>
+                </ul>
+
+            </div>
+            <!-- #languages -->
+
+            <hr class="opacity-10" aria-hidden="true">
+
+            <div class="container py-3">
+
+                <div class="row">
+
+                    <div class="col-md-6 col-lg-8 mb-3 mb-lg-0">
+
+                        <nav class="row fs-md" role="navigation">
+
+                            <div class="col-lg mb-3 mb-lg-0">
+
+                                <ul class="extensible-list">
+                                    <li>
+                                        <a class="text-reset" href="http://www1.nyc.gov/nyc-resources/agencies.page">
+                                            <strong>City Agencies</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="text-reset" href="https://a858-nycnotify.nyc.gov/notifynyc/">
+                                            <strong>Notify NYC</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="text-reset"
+                                            href="http://www1.nyc.gov/connect/mobile-applications.page">
+                                            <strong>NYC Mobile Apps</strong>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- .col -->
+
+                            <div class="col-lg mb-3 mb-lg-0">
+
+                                <ul class="extensible-list">
+                                    <li>
+                                        <a class="text-reset" href="http://www1.nyc.gov/home/contact-us.page">
+                                            <strong>Contact NYC Government</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="text-reset" href="https://a856-citystore.nyc.gov/">
+                                            <strong>CityStore</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="text-reset" href="http://maps.nyc.gov/doitt/nycitymap/">
+                                            <strong>Maps</strong>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <!-- .col -->
+
+                            <div class="col-lg mb-3 mb-lg-0">
+
+                                <ul class="extensible-list">
+                                    <li>
+                                        <a class="text-reset"
+                                            href="https://a127-ess.nyc.gov/psp/prdess/?cmd=login&languageCd=ENG&">
+                                            <strong>City Employees</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="text-reset" href="http://www1.nyc.gov/connect/social-media.page">
+                                            <strong>Stay Connected</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="text-reset"
+                                            href="http://www1.nyc.gov/nyc-resources/resident-toolkit.page">
+                                            <strong>Resident Toolkit</strong>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <!-- .col -->
+
+                        </nav>
+
+                    </div>
+                    <!-- .col -->
+
+                    <div class="col-md-6 col-lg-4">
+
+                        <a class="mb-2" href="https://www1.nyc.gov" title="Go to nyc.gov" target="_blank">
+                            <img class="mb-2" src="./images/nyc-bubble-logo.svg" width="90" alt="NYC Logo">
+                        </a>
+                        <p class="fs-sm">City of New York - 2019 All Rights Reserved. NYC is a trademark and service
+                            mark of the City of New York.</p>
+
+                        <ul class="extensible-list horizontal fs-sm">
+                            <li>
+                                <a class="text-reset" href="http://www1.nyc.gov/home/privacy-policy.page">Privacy
+                                    Policy</a>
+                            </li>
+                            <li>
+                                <a class="text-reset" href="http://www1.nyc.gov/home/terms-of-use.page">Terms
+                                    of Use</a>
+                            </li>
+                            <li>
+                                <a class="text-reset" href="http://www1.nyc.gov/site/mopd/index.page"
+                                    title="Mayor's Office for People with Disabilities">
+                                    <span class="sr-only">Mayor's Office for People with Disabilities</span>
+                                    <span class="fab fa-lg fa-accessible-icon"></span>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!-- .col -->
+
+                </div>
+                <!-- .row -->
+
+            </div>
+            <!-- .container -->
+
+        </div>
+        <!-- #nyc-bottom-footer -->
+
+    </footer>
+
+    <!-- jQuery (full, compressed version) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <!-- Popper.js and Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+    <!-- Google Translate -->
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en'
+            }, 'google_translate_element');
+        }
+    </script>
+
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- NYC template JS (RTL, search and language toggle, back to top)  -->
+    <script src="./js/main.js"></script>
+
 </body>
-</html>                             
+
+</html>
