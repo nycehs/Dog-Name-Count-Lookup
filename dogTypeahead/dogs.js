@@ -70682,6 +70682,7 @@ $(document).ready(function(){
         }
     ];
 
+    let enterSelection;
     
     // Constructing the suggestion engine
     var dogSuggestions = new Bloodhound({
@@ -70694,7 +70695,8 @@ $(document).ready(function(){
     $('.typeahead').typeahead({
         hint: true,
         highlight: true, /* Enable substring highlighting */
-        minLength: 1 /* Specify minimum characters required for showing result */
+        minLength: 1, /* Specify minimum characters required for showing result */
+        autocomplete:true
     },
     {
         name: 'suggestions',
@@ -70705,22 +70707,40 @@ $(document).ready(function(){
 
 // Binding the users selection to the html
 $('.typeahead').bind('typeahead:select', function(ev, suggestion) {
-  console.log('Selection: ' + suggestion.dogName +' '+ suggestion.nameCount);
+  //console.log('Selection: ' + suggestion.dogName +' '+ suggestion.nameCount);
   document.querySelector("#selectedDogName").innerHTML = suggestion.dogName;
   document.querySelector("#selectedDogCount").innerHTML = suggestion.nameCount;
+}).on('typeahead:render', (e,firstOption) => {
+  if (!!firstOption) {
+      enterSelection = firstOption
+  } else {
+      enterSelection = undefined;
+  }
+  console.log(enterSelection);
+}).on('keypress', (e) => {
+  if (e.which == 13 && enterSelection) {
+      console.log('poop');
+      $('#typeahead').typeahead('val', enterSelection.value);
+      (this.onDataSelect || $.noop)({ selection: enterSelection });
+      document.querySelector("#selectedDogName").innerHTML = enterSelection.dogName;
+      document.querySelector("#selectedDogCount").innerHTML = enterSelection.nameCount;
+      $('#typeahead').typeahead('close');
+  }
 });
 // Binding the users selection to the html
 $('.typeahead').bind('typeahead:autocomplete', function(ev, suggestion) {
-  console.log('Selection: ' + suggestion.dogName +' '+ suggestion.nameCount);
+  //console.log('Selection: ' + suggestion.dogName +' '+ suggestion.nameCount);
   document.querySelector("#selectedDogName").innerHTML = suggestion.dogName;
   document.querySelector("#selectedDogCount").innerHTML = suggestion.nameCount;
 });
 // Binding the users selection to the html
 $('.typeahead').bind('typeahead:cursorchange', function(ev, suggestion) {
-  console.log('Selection: ' + suggestion.dogName +' '+ suggestion.nameCount);
+  //console.log('Selection: ' + suggestion.dogName +' '+ suggestion.nameCount);
   document.querySelector("#selectedDogName").innerHTML = suggestion.dogName;
   document.querySelector("#selectedDogCount").innerHTML = suggestion.nameCount;
 });
+
+
 
 });
   
