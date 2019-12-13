@@ -1,9 +1,11 @@
+"use strict";
 
-$(document).ready(function(){
+$(document).ready(function() {
+  var _this = this;
+
   // Defining the local dataset
-
-    let dogs = [];
-    dogs = [
+  var dogs = [];
+      dogs = [
         {
         "dogName": "BELLA",
         "nameCount": 1306
@@ -70681,63 +70683,90 @@ $(document).ready(function(){
         "nameCount": 1
         }
     ];
-
-    let enterSelection;
-
-    
-    // Constructing the suggestion engine
-    var dogSuggestions = new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('dogName'),
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        local: dogs  //loadData()
-    });
-    
-    // Initializing the typeahead
-    $('.typeahead').typeahead({
-        hint: true,
-        highlight: true, /* Enable substring highlighting */
-        minLength: 1 /* Specify minimum characters required for showing result */
-    },
-    {
-        name: 'suggestions',
-        display: 'dogName',
-        limit: 9,
-        source: dogSuggestions
-    });
-
-// Binding the users selection to the html
-$('.typeahead').bind('typeahead:select', function(ev, suggestion) {
-  console.log('Selection: ' + suggestion.dogName +' '+ suggestion.nameCount);
-  document.querySelector("#selectedDogName").innerHTML = ("with the name <b>"+suggestion.dogName +"</b>.");
-  document.querySelector("#selectedDogCount").innerHTML = ("There are <b>"+suggestion.nameCount+"</b> licensed dogs in New York City");
-}).on('typeahead:render', (e,firstOption) => {
-  if (!!firstOption) {
-      enterSelection = firstOption
-  } else {
-      enterSelection = undefined;
-  }
-  console.log(enterSelection);
-}).on('keypress', (e) => {
-  if (e.which == 13 && enterSelection) {
-      $('#typeahead').typeahead('val', enterSelection.value);
-      (this.onDataSelect || $.noop)({ selection: enterSelection });
-      document.querySelector("#selectedDogName").innerHTML = ("with the name <b>"+ enterSelection.dogName +"</b>.");
-      document.querySelector("#selectedDogCount").innerHTML = ("There are <b>"+enterSelection.nameCount+"</b> licensed dogs in New York City");
-      $('#typeahead').typeahead('close');
-  }
-});
-// Binding the users selection to the html
-$('.typeahead').bind('typeahead:autocomplete', function(ev, suggestion) {
-  console.log('Selection: ' + suggestion.dogName +' '+ suggestion.nameCount);
-  document.querySelector("#selectedDogName").innerHTML = ("with the name <b>"+suggestion.dogName +"</b>.");
-  document.querySelector("#selectedDogCount").innerHTML = ("There are <b>"+suggestion.nameCount+"</b> licensed dogs in New York City");
-});
-// Binding the users selection to the html
-$('.typeahead').bind('typeahead:cursorchange', function(ev, suggestion) {
-  console.log('Selection: ' + suggestion.dogName +' '+ suggestion.nameCount);
-  document.querySelector("#selectedDogName").innerHTML = ("with the name <b>"+suggestion.dogName +"</b>.");
-  document.querySelector("#selectedDogCount").innerHTML = ("There are <b>"+suggestion.nameCount+"</b> licensed dogs in New York City");
-});
-
-});
   
+      var enterSelection; // Constructing the suggestion engine
+
+      var dogSuggestions = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace("dogName"),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        local: dogs //loadData()
+      }); // Initializing the typeahead
+    
+      $(".typeahead").typeahead(
+        {
+          hint: true,
+          highlight: true,
+    
+          /* Enable substring highlighting */
+          minLength: 1
+          /* Specify minimum characters required for showing result */
+        },
+        {
+          name: "suggestions",
+          display: "dogName",
+          limit: 9,
+          source: dogSuggestions
+        }
+      ); // Binding the users selection to the html
+    
+      $(".typeahead")
+        .bind("typeahead:select", function(ev, suggestion) {
+          console.log(
+            "Selection: " + suggestion.dogName + " " + suggestion.nameCount
+          );
+          document.querySelector("#selectedDogName").innerHTML =
+            "with the name <b>" + suggestion.dogName + "</b>.";
+          document.querySelector("#selectedDogCount").innerHTML =
+            "There are <b>" +
+            suggestion.nameCount +
+            "</b> licensed dogs in New York City";
+        })
+        .on("typeahead:render", function(e, firstOption) {
+          if (!!firstOption) {
+            enterSelection = firstOption;
+          } else {
+            enterSelection = undefined;
+          }
+    
+          console.log(enterSelection);
+        })
+        .on("keypress", function(e) {
+          if (e.which == 13 && enterSelection) {
+            $("#typeahead").typeahead("val", enterSelection.value);
+            (_this.onDataSelect || $.noop)({
+              selection: enterSelection
+            });
+            document.querySelector("#selectedDogName").innerHTML =
+              "with the name <b>" + enterSelection.dogName + "</b>.";
+            document.querySelector("#selectedDogCount").innerHTML =
+              "There are <b>" +
+              enterSelection.nameCount +
+              "</b> licensed dogs in New York City";
+            $("#typeahead").typeahead("close");
+          }
+        }); // Binding the users selection to the html
+    
+      $(".typeahead").bind("typeahead:autocomplete", function(ev, suggestion) {
+        console.log(
+          "Selection: " + suggestion.dogName + " " + suggestion.nameCount
+        );
+        document.querySelector("#selectedDogName").innerHTML =
+          "with the name <b>" + suggestion.dogName + "</b>.";
+        document.querySelector("#selectedDogCount").innerHTML =
+          "There are <b>" +
+          suggestion.nameCount +
+          "</b> licensed dogs in New York City";
+      }); // Binding the users selection to the html
+    
+      $(".typeahead").bind("typeahead:cursorchange", function(ev, suggestion) {
+        console.log(
+          "Selection: " + suggestion.dogName + " " + suggestion.nameCount
+        );
+        document.querySelector("#selectedDogName").innerHTML =
+          "with the name <b>" + suggestion.dogName + "</b>.";
+        document.querySelector("#selectedDogCount").innerHTML =
+          "There are <b>" +
+          suggestion.nameCount +
+          "</b> licensed dogs in New York City";
+      });
+    });

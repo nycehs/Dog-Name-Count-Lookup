@@ -18,12 +18,17 @@
 
     <!-- NYC Theme CSS -->
     <link rel="stylesheet" href="./css/theme.css">
-	
+    
+    <!-- Load Polyfills  -->
+    <script src="./js/es5-shim.min.js"></script>
+    <script src="./js/es6-shim.min.js"></script>
+    <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=es7%2Ces6%2Ces5%2Ces2018%2Ces2017%2Ces2016%2Ces2015%2Cdefault%2Cblissfuljs"></script>
+
+    
     <script defer src="./dogTypeahead/jquery-3.4.1.min.js"></script>
     <script defer type="text/javascript" src="./dogTypeahead/typeahead.bundle.min.js"></script>
     
-    <script defer type="text/javascript" src="./dogTypeahead/dogs.js"></script>
-
+    <script defer type="text/javascript" src="./dogTypeahead/dogs2.js"></script>
 
     
     
@@ -270,9 +275,12 @@
                             .dogtag {
                                 float:right;
                             }
+                            .finalWords {
+                                width: 100%;
+                            }
                             </style>
 
-                    <h2>See how many licensed dogs in New York City share your dog's name.</h2>
+                    <h3>See how many licensed dogs in New York City share your dog's name.</h3>
                     <div class=name-finder>
                     <div class=userInput .col-md-6>
                         <br>
@@ -287,8 +295,10 @@
                     </div> 
 
                     <br>
-                    <h3>Make your dog count! All dogs in New York City must be licensed. Apply for a dog license <a href="https://a816-healthpsi.nyc.gov/DogLicense/">here</a>.</h2>
-
+                    <div class=finalWords >
+                    <h3>Make your dog count! All dogs in New York City must be licensed. Apply for a dog license <a href="https://a816-healthpsi.nyc.gov/DogLicense/">here</a>.</h3>
+                    </div>
+                    
                     <p>
                         
                     </p>
@@ -304,19 +314,19 @@
                                 <span class="fas fa-share" title="Share this page" role="img"></span>
                             </li>
                             <li>
-                                <a class="no-btn-style text-reset" href="#1" title="Facebook">
+                                <a class="no-btn-style text-reset" href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=https://nycehs.github.io/Dog-Name-Count-Lookup/index.html&p[images][0]=&p[title]=Facebook&p[summary]=" title="Facebook">
                                     <span class="sr-only">Facebook</span>
                                     <span class="fab fa-facebook-f" role="img"></span>
                                 </a>
                             </li>
                             <li>
-                                <a class="no-btn-style text-reset" href="#1" title="Twitter">
+                                <a class="no-btn-style text-reset" href="http://twitter.com/home?status=https://nycehs.github.io/Dog-Name-Count-Lookup/index.html" title="Twitter">
                                     <span class="sr-only">Twitter</span>
                                     <span class="fab fa-twitter" role="img"></span>
                                 </a>
                             </li>
                             <li>
-                                <a class="no-btn-style text-reset" href="#1" title="Email">
+                                <a class="no-btn-style text-reset" href="mailto:?subject=DogNameCounts&body=https://nycehs.github.io/Dog-Name-Count-Lookup/index.html" title="Email">
                                     <span class="sr-only">Email</span>
                                     <span class="fa fa-envelope" role="img"></span>
                                 </a>
