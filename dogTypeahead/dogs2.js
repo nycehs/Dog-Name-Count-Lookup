@@ -70719,7 +70719,7 @@ $(document).ready(function() {
           document.querySelector("#selectedDogCount").innerHTML =
             "There are <b>" +
             suggestion.nameCount +
-            "</b> licensed dogs in New York City";
+            "</b> licensed dogs in NYC";
         })
         .on("typeahead:render", function(e, firstOption) {
           if (!!firstOption) {
@@ -70741,7 +70741,7 @@ $(document).ready(function() {
             document.querySelector("#selectedDogCount").innerHTML =
               "There are <b>" +
               enterSelection.nameCount +
-              "</b> licensed dogs in New York City";
+              "</b> licensed dogs in NYC";
             $("#typeahead").typeahead("close");
           }
         }); // Binding the users selection to the html
@@ -70755,7 +70755,7 @@ $(document).ready(function() {
         document.querySelector("#selectedDogCount").innerHTML =
           "There are <b>" +
           suggestion.nameCount +
-          "</b> licensed dogs in New York City";
+          "</b> licensed dogs in NYC";
       }); // Binding the users selection to the html
     
       $(".typeahead").bind("typeahead:cursorchange", function(ev, suggestion) {
@@ -70767,6 +70767,6 @@ $(document).ready(function() {
         document.querySelector("#selectedDogCount").innerHTML =
           "There are <b>" +
           suggestion.nameCount +
-          "</b> licensed dogs in New York City";
+          "</b> licensed dogs in NYC";
       });
     });
