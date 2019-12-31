@@ -93,7 +93,7 @@
                             <a class="align-self-center" href="https://www1.nyc.gov/health" title="Home">
 
                                 <!-- Placeholder logo, replace the following <svg> tag with your own image version -->
-                                <img class="logo" src="./images/Official logo color.jpg" width="100" alt="NYC Health logo">
+                                <img class="logo" src="./images/NYC-Logo-BW.jpg" width="100" alt="NYC Health logo">
                                
 
                             </a>
@@ -203,7 +203,7 @@
     <main role="main">
 
         <!-- Add your Custom image class below (after 'banner-with-background') -->
-        <div class="bg-primary banner-with-background dog d-flex flex-column" style="min-height: 250px;">
+        <div class="bg-primary banner-with-background dog d-flex flex-column" style="min-height: 275px;">
 
             <div class="container my-auto">
                 <div class="narrow">
@@ -237,7 +237,7 @@
                                 line-height: 30px;
                                 outline: medium none;
                                 padding: 8px 12px;
-                                width: 300px;
+                                width: 600px;
                             }
                             .typeahead {
                                 background-color: #FFFFFF;
@@ -258,7 +258,7 @@
                                 box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
                                 margin-top: 12px;
                                 padding: 8px 0;
-                                width: 322px;
+                                width: 522px;
                             }
                             .tt-suggestion {
                                 font-size: 22px;  /* Set suggestion dropdown font size */
@@ -280,24 +280,58 @@
                             }
                             </style>
 
-                    <h3>See how many licensed dogs in New York City share your dog's name.</h3>
+                    <h3>How many dogs in NYC share your dog's name?</h3>
                     <div class=name-finder>
-                    <div class=userInput .col-md-6>
+                    <div class=userInput .col-lg-12>
                         <br>
-                    <input type="text" id=typeahead class="typeahead tt-query" autocomplete="on" spellcheck="false" placeholder="Type dog's name here">
-                    <div class=dogtag><img src="./images/dogtag.png" height=100px width=100px></div> 
+                    <input type="text" id=typeahead class="typeahead tt-query" autocomplete="on" spellcheck="false" placeholder="Type your dog's name here">
+                    
                     </div>  
                     <br>
                     <div class=userResponse .col-md-6>
                     <div class=answer-count id=selectedDogCount>There are ___ licensed dogs in New York City</div>
-                    <div class=answer-name id=selectedDogName>with the name _______</div>
+                    <div class=answer-name id=selectedDogName>with the name _______.</div>
                     </div>  
                     </div> 
 
                     <br>
-                    <div class=finalWords >
-                    <h3>Make your dog count! All dogs in New York City must be licensed. Apply for a dog license <a href="https://a816-healthpsi.nyc.gov/DogLicense/">here</a>.</h3>
+
+
+                    <div class="row mt-2">
+                            <div class="card mb-3 mx-2 border">
+                                <div class="row no-gutters">
+
+                                    <div class="card-header bg-light col-12 px-2"><h3>Make your dog count!</h3></div>
+                                </div>
+                                    <div class="row">
+
+                                      <div class="col-md-8">
+                                         
+                                        <div class="card-body">
+                                          <p class="card-text">All dogs in NYC must be licensed. A dog license lets you use off-leash dog runs, supports animal shelters, and can help the City find your dog if it gets lost.</p>
+                                          <p><a href="https://www1.nyc.gov/site/doh/services/dog-licenses.page">Learn more about dog licensing</a>. </p>
+                                         
+                                              
+                                        </div>
+                                      </div>
+
+                                      <div class="col-md-4">
+                                            <img src="./images/dogtag.png" class="card-img px-2 py-2" alt="A NYC dog license tag">
+                                          </div>
+                                    
+                                          
+
+                                    </div>
+                                    <div class="row no-gutters px-2 py-2 border-top">
+                                            <h4>Apply for a dog license <a href="https://a816-healthpsi.nyc.gov/DogLicense/">here</a>.</h4>
+                                    </div>
+                                  </div>
                     </div>
+
+
+
+
+                    
                     
                     <p>
                         
