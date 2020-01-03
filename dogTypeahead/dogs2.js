@@ -70715,11 +70715,11 @@ $(document).ready(function() {
             "Selection: " + suggestion.dogName + " " + suggestion.nameCount
           );
           document.querySelector("#selectedDogName").innerHTML =
-            "with the name <b>" + suggestion.dogName + "</b>.";
+            "named <b>" + suggestion.dogName + "</b>.";
           document.querySelector("#selectedDogCount").innerHTML =
             "There are <b>" +
             suggestion.nameCount +
-            "</b> licensed dogs in NYC";
+            "</b> licensed dogs";
         })
         .on("typeahead:render", function(e, firstOption) {
           if (!!firstOption) {
@@ -70737,11 +70737,11 @@ $(document).ready(function() {
               selection: enterSelection
             });
             document.querySelector("#selectedDogName").innerHTML =
-              "with the name <b>" + enterSelection.dogName + "</b>.";
+              "named <b>" + enterSelection.dogName + "</b>.";
             document.querySelector("#selectedDogCount").innerHTML =
               "There are <b>" +
               enterSelection.nameCount +
-              "</b> licensed dogs in NYC";
+              "</b> licensed dogs";
             $("#typeahead").typeahead("close");
           }
         }); // Binding the users selection to the html
@@ -70751,11 +70751,11 @@ $(document).ready(function() {
           "Selection: " + suggestion.dogName + " " + suggestion.nameCount
         );
         document.querySelector("#selectedDogName").innerHTML =
-          "with the name <b>" + suggestion.dogName + "</b>.";
+          "named <b>" + suggestion.dogName + "</b>.";
         document.querySelector("#selectedDogCount").innerHTML =
           "There are <b>" +
           suggestion.nameCount +
-          "</b> licensed dogs in NYC";
+          "</b> licensed dogs";
       }); // Binding the users selection to the html
     
       $(".typeahead").bind("typeahead:cursorchange", function(ev, suggestion) {
@@ -70763,10 +70763,10 @@ $(document).ready(function() {
           "Selection: " + suggestion.dogName + " " + suggestion.nameCount
         );
         document.querySelector("#selectedDogName").innerHTML =
-          "with the name <b>" + suggestion.dogName + "</b>.";
+          "named <b>" + suggestion.dogName + "</b>.";
         document.querySelector("#selectedDogCount").innerHTML =
           "There are <b>" +
           suggestion.nameCount +
-          "</b> licensed dogs in NYC";
+          "</b> licensed dogs";
       });
     });
